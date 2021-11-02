@@ -19,7 +19,8 @@ defmodule GlobalConfigsWeb.Router do
 
     get "/", PageController, :index
 
-    live "/groups", ConfigGroupLive, :index
+    live "/groups", ConfigGroupLive.Index, :index
+    live "/groups/:id", ConfigGroupLive.Show, :show
   end
 
   # Other scopes may use custom stacks.

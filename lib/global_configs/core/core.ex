@@ -18,4 +18,8 @@ defmodule GlobalConfigs.Core do
 
     Repo.all(query)
   end
+
+  def find_group(id) do
+    Repo.get(ConfigGroup, id)
+  end
 end

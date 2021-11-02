@@ -1,4 +1,4 @@
-defmodule GlobalConfigsWeb.ConfigGroupLive do
+defmodule GlobalConfigsWeb.ConfigGroupLive.Index do
   use GlobalConfigsWeb, :live_view
 
   alias GlobalConfigs.Core
@@ -7,7 +7,7 @@ defmodule GlobalConfigsWeb.ConfigGroupLive do
     {:ok, assign(socket, groups: Core.list_groups("*"))}
   end
 
-  def handle_event("filter-env", %{"env" => env}, socket) do
+  def handle_event("filter-group", %{"env" => env}, socket) do
     {:noreply, assign(socket, groups: Core.list_groups(env))}
   end
 end

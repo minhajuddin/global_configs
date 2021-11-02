@@ -1,0 +1,6 @@
+<h2>
+  <%= @group.name %>
+  [<%= @group.env %>]
+</h2>
+
+<%= live_patch "All Groups", to: Routes.config_group_index_path(@socket, :index) %>

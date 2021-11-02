@@ -1,6 +1,6 @@
 <h1>Config Groups</h1>
 
-<form phx-change="filter-env">
+<form phx-change="filter-group">
   <label>
     env:
     <select name="env">
@@ -14,6 +14,8 @@
 
 <ul>
 <%= for g <- @groups do %>
-  <li><%= g.name %> <em>(<%= g.env %>)</em></li>
+  <li>
+    <%= live_patch "#{g.name} [#{g.env }]" , to: Routes.config_group_show_path(@socket, :show, g) %>
+  </li>
 <% end %>
 </ul>
