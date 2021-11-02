@@ -12,10 +12,17 @@
   </label>
 </form>
 
-<ul>
-<%= for g <- @groups do %>
-  <li>
-    <%= live_redirect "#{g.name} [#{g.env }]" , to: Routes.config_group_show_path(@socket, :show, g) %>
-  </li>
-<% end %>
-</ul>
+<table>
+  <tr>
+    <th>name</th>
+    <th>env</th>
+    <th>notes</th>
+  </tr>
+  <%= for g <- @groups do %>
+    <tr>
+      <td><%= live_redirect "#{g.name} [#{g.env }]" , to: Routes.config_group_show_path(@socket, :show, g) %></td>
+      <td><%= g.env %></td>
+      <td><%= g.notes %></td>
+    </tr>
+  <% end %>
+</table>
