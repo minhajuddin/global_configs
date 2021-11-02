@@ -13,8 +13,8 @@ defmodule GlobalConfigsWeb.ConfigGroupLive.Show do
      )}
   end
 
-  def handle_event("filter-group", %{"env" => env}, socket) do
-    {:noreply, assign(socket, groups: Core.list_groups(env))}
+  def handle_event("filter-config", %{"q" => query}, socket) do
+    {:noreply, assign(socket, configs: Core.list_configs(socket.assigns.group.id, query))}
   end
 
   def handle_event("save", config_params, socket) do

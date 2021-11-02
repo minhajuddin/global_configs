@@ -23,8 +23,18 @@ defmodule GlobalConfigs.Core do
     Repo.get(ConfigGroup, id)
   end
 
-  def list_configs(config_group_id) do
-    Repo.all(from c in Config, where: c.config_group_id == ^config_group_id)
+  def list_configs(config_group_id, search \\ "") do
+    query = from c in Config, where: c.config_group_id == ^config_group_id
+
+    query =
+      if search == "%%" do
+        query
+      else
+        search = "%#{search}%"
+        from q in query, where: fragment("? ILIKE  ?", q.name, ^search)
+      end
+
+    Repo.all(query)
   end
 
   def create_config(group, config_params) do
