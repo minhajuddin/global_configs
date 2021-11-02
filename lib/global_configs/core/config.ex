@@ -3,9 +3,9 @@ defmodule GlobalConfigs.Core.Config do
   import Ecto.Changeset
 
   schema "configs" do
-    field :name, :string
-    field :notes, :string
+    field :name, :string, null: false
     field :value, :string
+    field :notes, :string
     field :config_group_id, :id
 
     timestamps()

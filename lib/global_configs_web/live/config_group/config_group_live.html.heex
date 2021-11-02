@@ -1,0 +1,19 @@
+<h1>Config Groups</h1>
+
+<form phx-change="filter-env">
+  <label>
+    env:
+    <select name="env">
+      <option>*</option>
+      <option>prod</option>
+      <option>staging</option>
+      <option>dev</option>
+    </select>
+  </label>
+</form>
+
+<ul>
+<%= for g <- @groups do %>
+  <li><%= g.name %> <em>(<%= g.env %>)</em></li>
+<% end %>
+</ul>
