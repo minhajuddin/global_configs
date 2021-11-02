@@ -7,8 +7,9 @@
 
 <%= if @show_form do %>
 <form phx-submit="save" accept-charset="utf-8">
-  <input type="text" name="name" />
-  <textarea name="value"></textarea>
+  <input type="text" name="name" placeholder="Name" />
+  <textarea name="value" placeholder="Value"></textarea>
+  <textarea name="notes" placeholder="Notes..."></textarea>
   <input type="submit" value="Add" />
 </form>
 <% end %>
