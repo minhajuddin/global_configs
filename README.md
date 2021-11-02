@@ -1,5 +1,20 @@
 # GlobalConfigs
 
+An easy way to sync configs
+
+ConfigGroup
+name:
+env:
+configs: []Config
+
+Config
+name
+value
+notes
+
+
+- - -
+
 To start your Phoenix server:
 
   * Install dependencies with `mix deps.get`
