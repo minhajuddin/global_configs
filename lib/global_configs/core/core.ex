@@ -22,4 +22,8 @@ defmodule GlobalConfigs.Core do
   def find_group(id) do
     Repo.get(ConfigGroup, id)
   end
+
+  def list_configs(config_group_id) do
+    Repo.all(from c in Config, where: c.config_group_id == ^config_group_id)
+  end
 end

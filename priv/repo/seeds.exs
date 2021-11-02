@@ -9,10 +9,13 @@
 #
 # We recommend using the bang functions (`insert!`, `update!`
 # and so on) as they will fail if something goes wrong.
+alias GlobalConfigs.Repo
+alias GlobalConfigs.Core.Config
+alias GlobalConfigs.Core.ConfigGroup
 
 now = NaiveDateTime.utc_now() |> NaiveDateTime.truncate(:second)
 
-GlobalConfigs.Repo.insert_all(GlobalConfigs.Core.ConfigGroup, [
+Repo.insert_all(ConfigGroup, [
   %{name: "liveform", env: "prod", notes: "Liveform configs", inserted_at: now, updated_at: now},
   %{name: "liveform", env: "dev", notes: "Liveform configs", inserted_at: now, updated_at: now},
   %{
@@ -23,4 +26,25 @@ GlobalConfigs.Repo.insert_all(GlobalConfigs.Core.ConfigGroup, [
     updated_at: now
   },
   %{name: "simpleform", env: "dev", notes: "Liveform configs", inserted_at: now, updated_at: now}
+])
+
+group = Repo.get_by(ConfigGroup, name: "liveform", env: "prod")
+
+Repo.insert_all(Config, [
+  %{
+    name: "db_url",
+    value: "postgres://un@pw:localhost",
+    notes: "DB connection string",
+    inserted_at: now,
+    updated_at: now,
+    config_group_id: group.id
+  },
+  %{
+    name: "crm_url",
+    value: "https://github.com",
+    notes: "CRM url",
+    inserted_at: now,
+    updated_at: now,
+    config_group_id: group.id
+  }
 ])

@@ -4,3 +4,21 @@
 </h2>
 
 <%= live_patch "All Groups", to: Routes.config_group_index_path(@socket, :index) %>
+
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Value</th>
+    </tr>
+  </thead>
+  <tbody>
+    <%= for c <- @configs do %>
+      <tr>
+        <td><%= c.name %></td>
+        <td><%= c.value %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

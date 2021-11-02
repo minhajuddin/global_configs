@@ -5,8 +5,8 @@ defmodule GlobalConfigsWeb.ConfigGroupLive.Show do
   require Logger
 
   def mount(params, _session, socket) do
-    Logger.info(params: params)
-    {:ok, assign(socket, group: Core.find_group(params["id"]))}
+    {:ok,
+     assign(socket, group: Core.find_group(params["id"]), configs: Core.list_configs(params["id"]))}
   end
 
   def handle_event("filter-group", %{"env" => env}, socket) do
