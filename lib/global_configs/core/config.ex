@@ -14,7 +14,7 @@ defmodule GlobalConfigs.Core.Config do
   @doc false
   def changeset(config, attrs) do
     config
-    |> cast(attrs, [:name, :value, :notes])
-    |> validate_required([:name, :value, :notes])
+    |> cast(attrs, [:name, :value, :notes, :config_group_id])
+    |> validate_required([:name, :value])
   end
 end

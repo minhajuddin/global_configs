@@ -3,8 +3,15 @@
   [<%= @group.env %>]
 </h2>
 
-<%= live_patch "All Groups", to: Routes.config_group_index_path(@socket, :index) %>
+<%= live_redirect "All Groups", to: Routes.config_group_index_path(@socket, :index) %>
 
+<%= if @show_form do %>
+<form phx-submit="save" accept-charset="utf-8">
+  <input type="text" name="name" />
+  <textarea name="value"></textarea>
+  <input type="submit" value="Add" />
+</form>
+<% end %>
 
 <table>
   <thead>

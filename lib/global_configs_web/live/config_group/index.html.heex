@@ -15,7 +15,7 @@
 <ul>
 <%= for g <- @groups do %>
   <li>
-    <%= live_patch "#{g.name} [#{g.env }]" , to: Routes.config_group_show_path(@socket, :show, g) %>
+    <%= live_redirect "#{g.name} [#{g.env }]" , to: Routes.config_group_show_path(@socket, :show, g) %>
   </li>
 <% end %>
 </ul>

@@ -26,4 +26,13 @@ defmodule GlobalConfigs.Core do
   def list_configs(config_group_id) do
     Repo.all(from c in Config, where: c.config_group_id == ^config_group_id)
   end
+
+  def create_config(group, config_params) do
+    Repo.insert(
+      Config.changeset(
+        %Config{},
+        Map.merge(config_params, %{"config_group_id" => group.id})
+      )
+    )
+  end
 end
