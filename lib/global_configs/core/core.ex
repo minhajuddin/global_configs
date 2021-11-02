@@ -31,7 +31,18 @@ defmodule GlobalConfigs.Core do
         query
       else
         search = "%#{search}%"
-        from q in query, where: fragment("? ILIKE  ?", q.name, ^search)
+
+        from q in query,
+          where:
+            fragment(
+              "? ILIKE  ? OR ? ILIKE ? OR ? ILIKE ?",
+              q.name,
+              ^search,
+              q.value,
+              ^search,
+              q.notes,
+              ^search
+            )
       end
 
     Repo.all(query)

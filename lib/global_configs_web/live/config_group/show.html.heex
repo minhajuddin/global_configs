@@ -14,7 +14,7 @@
 <% end %>
 
 <form phx-change="filter-config" accept-charset="utf-8">
-  <input type="text" name="q" placeholder="Search config" />
+  <input type="text" name="q" placeholder="Search config" phx-throttle="1000" />
 </form>
 
 <table>
@@ -22,6 +22,7 @@
     <tr>
       <th>Name</th>
       <th>Value</th>
+      <th>Notes</th>
     </tr>
   </thead>
   <tbody>
@@ -29,6 +30,7 @@
       <tr>
         <td><%= c.name %></td>
         <td><%= c.value %></td>
+        <td><%= c.notes %></td>
       </tr>
     <% end %>
   </tbody>
